@@ -1,21 +1,19 @@
 #include "raylib.h"
+#include "title.h"
 
-#define WINDOWWIDTH 1200
-#define WINDOWHEIGHT 900
-#define SQUAREWIDTH 250
+#define WINDOW_WIDTH 1200
+#define WINDOW_HEIGHT 900
 
 int
 main()
 {
-        InitWindow(WINDOWWIDTH, WINDOWHEIGHT, "Cilantro");
+        InitWindow(WINDOW_WIDTH, WINDOW_HEIGHT, "Cilantro");
 
         while (!WindowShouldClose())
         {
                 BeginDrawing();
                 ClearBackground(BLACK);
-                DrawRectangle((WINDOWWIDTH - SQUAREWIDTH) / 2,
-                              (WINDOWHEIGHT - SQUAREWIDTH) / 2, SQUAREWIDTH,
-                              SQUAREWIDTH, RAYWHITE);
+                renderTitleScreen(WINDOW_WIDTH, WINDOW_HEIGHT);
                 DrawFPS(5, 5);
                 EndDrawing();
         }
