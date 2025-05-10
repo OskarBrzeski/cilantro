@@ -16,3 +16,6 @@ renderTitleButton(int width, int height, int buttonCount, int buttonPos,
 int
 calculateButtonX(int width, int height, int buttonWidth, int buttonCount,
                  int buttonPos);
+
+void
+handleInputTitle(void);

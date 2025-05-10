@@ -2,9 +2,13 @@
 #include "raylib.h"
 #include <stdint.h>
 
+int buttonSelected = 0;
+int buttonCount = 3;
+
 void
 renderTitleScreen(int width, int height)
 {
+        handleInputTitle();
         renderTitle(width, height);
         renderTitleButtons(width, height);
 }
@@ -22,8 +26,6 @@ renderTitle(int width, int height)
 void
 renderTitleButtons(int width, int height)
 {
-        int buttonCount = 3;
-
         renderTitleButton(width, height, buttonCount, 0, "Play");
         renderTitleButton(width, height, buttonCount, 1, "Options");
         renderTitleButton(width, height, buttonCount, 2, "Quit");
@@ -43,6 +45,10 @@ renderTitleButton(int width, int height, int buttonCount, int buttonPos,
                                        .y = buttonY,
                                        .width = buttonWidth,
                                        .height = buttonHeight};
+        if (buttonSelected == buttonPos)
+        {
+                DrawRectangleRec(button, GRAY);
+        }
         DrawRectangleLinesEx(button, 4.0f, RAYWHITE);
 
         int fontSize = 30;
@@ -61,4 +67,24 @@ calculateButtonX(int width, int height, int buttonWidth, int buttonCount,
                          buttonGap * (buttonCount - 1)) /
                         2;
         return leftmostX + (buttonWidth + buttonGap) * (buttonPos);
+}
+
+void
+handleInputTitle(void)
+{
+        int key;
+        do
+        {
+                key = GetKeyPressed();
+
+                if (key == KEY_LEFT && buttonSelected > 0)
+                {
+                        --buttonSelected;
+                }
+
+                if (key == KEY_RIGHT && buttonSelected < (buttonCount - 1))
+                {
+                        ++buttonSelected;
+                }
+        } while (key != 0);
 }
