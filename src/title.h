@@ -30,4 +30,7 @@ titleButtonText(int buttonPos);
 void
 handleInputTitle(void);
 
+void
+titleButtonPressed(void);
+
 #endif

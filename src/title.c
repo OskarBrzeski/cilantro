@@ -100,5 +100,23 @@ handleInputTitle(void)
                         ++buttonSelected;
                 }
 
+                if (key == KEY_ENTER)
+                {
+                        titleButtonPressed();
+                }
         } while (key != 0);
+}
+
+void
+titleButtonPressed(void)
+{
+        switch (buttonSelected)
+        {
+        case TITLE_PLAY:
+                break;
+        case TITLE_OPTIONS:
+                break;
+        case TITLE_QUIT:
+                quitGame = true;
+        }
 }

@@ -2,6 +2,7 @@
 #include "raylib.h"
 #include "title.h"
 
+bool quitGame = false;
 int windowWidth = 1200;
 int windowHeight = 900;
 
@@ -10,7 +11,7 @@ main()
 {
         InitWindow(windowWidth, windowHeight, "Cilantro");
 
-        while (!WindowShouldClose())
+        while (!WindowShouldClose() && !quitGame)
         {
                 BeginDrawing();
                 ClearBackground(BLACK);
