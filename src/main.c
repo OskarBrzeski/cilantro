@@ -1,19 +1,20 @@
+#include "globals.h"
 #include "raylib.h"
 #include "title.h"
 
-#define WINDOW_WIDTH 1200
-#define WINDOW_HEIGHT 900
+int windowWidth = 1200;
+int windowHeight = 900;
 
 int
 main()
 {
-        InitWindow(WINDOW_WIDTH, WINDOW_HEIGHT, "Cilantro");
+        InitWindow(windowWidth, windowHeight, "Cilantro");
 
         while (!WindowShouldClose())
         {
                 BeginDrawing();
                 ClearBackground(BLACK);
-                renderTitleScreen(WINDOW_WIDTH, WINDOW_HEIGHT);
+                renderTitleScreen();
                 DrawFPS(5, 5);
                 EndDrawing();
         }

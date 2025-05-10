@@ -1,45 +1,43 @@
 #include "title.h"
+#include "globals.h"
 #include "raylib.h"
-#include <stdint.h>
 
 int buttonSelected = 0;
 int buttonCount = 3;
 
 void
-renderTitleScreen(int width, int height)
+renderTitleScreen()
 {
         handleInputTitle();
-        renderTitle(width, height);
-        renderTitleButtons(width, height);
+        renderTitle();
+        renderTitleButtons();
 }
 
 void
-renderTitle(int width, int height)
+renderTitle()
 {
         int fontSize = 130;
         int textWidth = MeasureText("Cilantro", fontSize);
-        int textX = (width - textWidth) / 2;
-        int textY = (height - textWidth) / 2;
+        int textX = (windowWidth - textWidth) / 2;
+        int textY = (windowHeight - textWidth) / 2;
         DrawText("Cilantro", textX, textY, fontSize, RAYWHITE);
 }
 
 void
-renderTitleButtons(int width, int height)
+renderTitleButtons()
 {
-        renderTitleButton(width, height, buttonCount, 0, "Play");
-        renderTitleButton(width, height, buttonCount, 1, "Options");
-        renderTitleButton(width, height, buttonCount, 2, "Quit");
+        renderTitleButton(buttonCount, 0, "Play");
+        renderTitleButton(buttonCount, 1, "Options");
+        renderTitleButton(buttonCount, 2, "Quit");
 }
 
 void
-renderTitleButton(int width, int height, int buttonCount, int buttonPos,
-                  const char *text)
+renderTitleButton(int buttonCount, int buttonPos, const char *text)
 {
         int buttonWidth = 200;
         int buttonHeight = 100;
         int buttonY = 650;
-        int buttonX = calculateButtonX(width, height, buttonWidth, buttonCount,
-                                       buttonPos);
+        int buttonX = calculateButtonX(buttonWidth, buttonCount, buttonPos);
 
         Rectangle button = (Rectangle){.x = buttonX,
                                        .y = buttonY,
@@ -59,11 +57,10 @@ renderTitleButton(int width, int height, int buttonCount, int buttonPos,
 }
 
 int
-calculateButtonX(int width, int height, int buttonWidth, int buttonCount,
-                 int buttonPos)
+calculateButtonX(int buttonWidth, int buttonCount, int buttonPos)
 {
         int buttonGap = 40;
-        int leftmostX = (width - buttonWidth * buttonCount -
+        int leftmostX = (windowWidth - buttonWidth * buttonCount -
                          buttonGap * (buttonCount - 1)) /
                         2;
         return leftmostX + (buttonWidth + buttonGap) * (buttonPos);

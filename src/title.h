@@ -1,21 +1,22 @@
-#include <stdint.h>
+#ifndef TITLE_H
+#define TITLE_H
 
 void
-renderTitleScreen(int width, int height);
+renderTitleScreen(void);
 
 void
-renderTitle(int width, int height);
+renderTitle(void);
 
 void
-renderTitleButtons(int width, int height);
+renderTitleButtons(void);
 
 void
-renderTitleButton(int width, int height, int buttonCount, int buttonPos,
-                  const char *text);
+renderTitleButton(int buttonCount, int buttonPos, const char *text);
 
 int
-calculateButtonX(int width, int height, int buttonWidth, int buttonCount,
-                 int buttonPos);
+calculateButtonX(int buttonWidth, int buttonCount, int buttonPos);
 
 void
 handleInputTitle(void);
+
+#endif
