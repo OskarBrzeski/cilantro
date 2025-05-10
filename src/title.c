@@ -3,7 +3,6 @@
 #include "raylib.h"
 
 int buttonSelected = 0;
-int buttonCount = 3;
 
 void
 renderTitleScreen()
@@ -26,18 +25,19 @@ renderTitle()
 void
 renderTitleButtons()
 {
-        renderTitleButton(buttonCount, 0, "Play");
-        renderTitleButton(buttonCount, 1, "Options");
-        renderTitleButton(buttonCount, 2, "Quit");
+        renderTitleButton(TITLE_BUTTON_COUNT, 0);
+        renderTitleButton(TITLE_BUTTON_COUNT, 1);
+        renderTitleButton(TITLE_BUTTON_COUNT, 2);
 }
 
 void
-renderTitleButton(int buttonCount, int buttonPos, const char *text)
+renderTitleButton(int TITLE_BUTTON_COUNT, int buttonPos)
 {
         int buttonWidth = 200;
         int buttonHeight = 100;
         int buttonY = 650;
-        int buttonX = calculateButtonX(buttonWidth, buttonCount, buttonPos);
+        int buttonX =
+            calculateButtonX(buttonWidth, TITLE_BUTTON_COUNT, buttonPos);
 
         Rectangle button = (Rectangle){.x = buttonX,
                                        .y = buttonY,
@@ -49,6 +49,7 @@ renderTitleButton(int buttonCount, int buttonPos, const char *text)
         }
         DrawRectangleLinesEx(button, 4.0f, RAYWHITE);
 
+        const char *text = titleButtonText(buttonPos);
         int fontSize = 30;
         int textWidth = MeasureText(text, fontSize);
         int textY = buttonY + (buttonHeight - fontSize) / 2;
@@ -57,13 +58,27 @@ renderTitleButton(int buttonCount, int buttonPos, const char *text)
 }
 
 int
-calculateButtonX(int buttonWidth, int buttonCount, int buttonPos)
+calculateButtonX(int buttonWidth, int TITLE_BUTTON_COUNT, int buttonPos)
 {
         int buttonGap = 40;
-        int leftmostX = (windowWidth - buttonWidth * buttonCount -
-                         buttonGap * (buttonCount - 1)) /
+        int leftmostX = (windowWidth - buttonWidth * TITLE_BUTTON_COUNT -
+                         buttonGap * (TITLE_BUTTON_COUNT - 1)) /
                         2;
         return leftmostX + (buttonWidth + buttonGap) * (buttonPos);
+}
+
+const char *
+titleButtonText(int buttonPos)
+{
+        switch (buttonPos)
+        {
+        case TITLE_PLAY:
+                return "Play";
+        case TITLE_OPTIONS:
+                return "Options";
+        case TITLE_QUIT:
+                return "Quit";
+        }
 }
 
 void
@@ -79,9 +94,11 @@ handleInputTitle(void)
                         --buttonSelected;
                 }
 
-                if (key == KEY_RIGHT && buttonSelected < (buttonCount - 1))
+                if (key == KEY_RIGHT &&
+                    buttonSelected < (TITLE_BUTTON_COUNT - 1))
                 {
                         ++buttonSelected;
                 }
+
         } while (key != 0);
 }
