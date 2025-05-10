@@ -1,0 +1,3 @@
+BreakAfterReturnType: All
+BreakBeforeBraces: Allman
+IndentWidth: 8
