@@ -5,7 +5,7 @@
 int buttonSelected = 0;
 
 void
-renderTitleScreen()
+renderTitleScreen(void)
 {
         handleInputTitle();
         renderTitle();
@@ -13,7 +13,7 @@ renderTitleScreen()
 }
 
 void
-renderTitle()
+renderTitle(void)
 {
         int fontSize = 130;
         int textWidth = MeasureText("Cilantro", fontSize);
@@ -23,7 +23,7 @@ renderTitle()
 }
 
 void
-renderTitleButtons()
+renderTitleButtons(void)
 {
         renderTitleButton(TITLE_BUTTON_COUNT, 0);
         renderTitleButton(TITLE_BUTTON_COUNT, 1);
