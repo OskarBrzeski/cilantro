@@ -8,6 +8,9 @@ void
 renderFieldLayout(void);
 
 void
+renderChipsGoal(void);
+
+void
 renderTotalChips(void);
 
 #endif
