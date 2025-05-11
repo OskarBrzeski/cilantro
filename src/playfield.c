@@ -2,6 +2,7 @@
 #include "globals.h"
 #include "raylib.h"
 #include "utils.h"
+#include <stdint.h>
 
 void
 renderPlayField(void)
@@ -39,15 +40,15 @@ renderChipsGoal(void)
 
         const char *goalString = intToString(goal, fontSize);
         int textWidth = MeasureText(goalString, fontSize);
-        int textX = rec.x + (rec.width - textWidth) / 2;
-        int textY = rec.y + (rec.height - fontSize) / 2 + 1;
+        int textX = centreTextX(&rec, textWidth);
+        int textY = centreTextY(&rec, fontSize);
         DrawText(goalString, textX, textY, fontSize, RAYWHITE);
 }
 
 void
 renderTotalChips(void)
 {
-        int chips = 347645; // temporary
+        int64_t chips = 64764519060; // temporary
 
         Rectangle rec = {
             .x = 15,
@@ -60,8 +61,8 @@ renderTotalChips(void)
         int fontSize = 40;
         const char *chipsString = intToString(chips, 16);
         int textWidth = MeasureText(chipsString, fontSize);
-        int textX = rec.x + (rec.width - textWidth) / 2;
-        int textY = rec.y + (rec.height - fontSize) / 2 + 1;
+        int textX = centreTextX(&rec, textWidth);
+        int textY = centreTextY(&rec, fontSize);
         DrawText(chipsString, textX, textY, fontSize, RAYWHITE);
 }
 
@@ -84,14 +85,13 @@ renderChips(void)
             .width = 110,
             .height = 50,
         };
-
         DrawRectangleRounded(rec, 0.3f, 0, BLUE);
 
         int fontSize = 40;
         const char *chipsString = intToString(chips, 16);
         int textWidth = MeasureText(chipsString, fontSize);
-        int textX = rec.x + rec.width - textWidth - 10;
-        int textY = rec.y + (rec.height - fontSize) / 2 + 1;
+        int textX = rightTextX(&rec, textWidth, 10);
+        int textY = centreTextY(&rec, fontSize);
         DrawText(chipsString, textX, textY, fontSize, RAYWHITE);
 }
 
@@ -106,13 +106,11 @@ renderMult(void)
             .width = 110,
             .height = 50,
         };
-
         DrawRectangleRounded(rec, 0.3f, 0, RED);
 
         int fontSize = 40;
         const char *chipsString = intToString(mult, 16);
-        int textWidth = MeasureText(chipsString, fontSize);
-        int textX = rec.x + 10;
-        int textY = rec.y + (rec.height - fontSize) / 2 + 1;
+        int textX = leftTextX(&rec, 10);
+        int textY = centreTextY(&rec, fontSize);
         DrawText(chipsString, textX, textY, fontSize, RAYWHITE);
 }

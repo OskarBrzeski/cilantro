@@ -17,7 +17,7 @@ playfield.o: ./src/playfield.c ./src/playfield.h ./src/globals.h
 	cc -c ./src/playfield.c ${LIBS}
 
 utils.o: ./src/utils.c ./src/utils.h
-	cc -c ./src/utils.c
+	cc -c ./src/utils.c ${LIBS}
 
 clean:
 	rm *.o
