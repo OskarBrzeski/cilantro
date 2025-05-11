@@ -15,6 +15,7 @@ renderFieldLayout(void)
         DrawRectangle(0, 0, 300, windowHeight, GRAY);
         renderChipsGoal();
         renderTotalChips();
+        renderChipsAndMult();
 }
 
 void
@@ -34,12 +35,12 @@ renderChipsGoal(void)
             .width = 260 - goalTextLength,
             .height = 50,
         };
-        DrawRectangleRounded(rec, 0.25f, 0, BLACK);
+        DrawRectangleRounded(rec, 0.3f, 0, BLACK);
 
         const char *goalString = intToString(goal, fontSize);
         int textWidth = MeasureText(goalString, fontSize);
         int textX = rec.x + (rec.width - textWidth) / 2;
-        int textY = rec.y + (rec.height - fontSize) / 2;
+        int textY = rec.y + (rec.height - fontSize) / 2 + 1;
         DrawText(goalString, textX, textY, fontSize, RAYWHITE);
 }
 
@@ -54,12 +55,64 @@ renderTotalChips(void)
             .width = 270,
             .height = 60,
         };
-        DrawRectangleRounded(rec, 0.25f, 0, BLACK);
+        DrawRectangleRounded(rec, 0.3f, 0, BLACK);
 
         int fontSize = 40;
         const char *chipsString = intToString(chips, 16);
         int textWidth = MeasureText(chipsString, fontSize);
         int textX = rec.x + (rec.width - textWidth) / 2;
-        int textY = rec.y + (rec.height - fontSize) / 2;
+        int textY = rec.y + (rec.height - fontSize) / 2 + 1;
+        DrawText(chipsString, textX, textY, fontSize, RAYWHITE);
+}
+
+void
+renderChipsAndMult(void)
+{
+        renderChips();
+        DrawText("X", 135, 302, 50, WHITE);
+        renderMult();
+}
+
+void
+renderChips(void)
+{
+        int chips = 620;
+
+        Rectangle rec = {
+            .x = 15,
+            .y = 300,
+            .width = 110,
+            .height = 50,
+        };
+
+        DrawRectangleRounded(rec, 0.3f, 0, BLUE);
+
+        int fontSize = 40;
+        const char *chipsString = intToString(chips, 16);
+        int textWidth = MeasureText(chipsString, fontSize);
+        int textX = rec.x + rec.width - textWidth - 10;
+        int textY = rec.y + (rec.height - fontSize) / 2 + 1;
+        DrawText(chipsString, textX, textY, fontSize, RAYWHITE);
+}
+
+void
+renderMult(void)
+{
+        int mult = 326;
+
+        Rectangle rec = {
+            .x = 300 - 110 - 15,
+            .y = 300,
+            .width = 110,
+            .height = 50,
+        };
+
+        DrawRectangleRounded(rec, 0.3f, 0, RED);
+
+        int fontSize = 40;
+        const char *chipsString = intToString(mult, 16);
+        int textWidth = MeasureText(chipsString, fontSize);
+        int textX = rec.x + 10;
+        int textY = rec.y + (rec.height - fontSize) / 2 + 1;
         DrawText(chipsString, textX, textY, fontSize, RAYWHITE);
 }

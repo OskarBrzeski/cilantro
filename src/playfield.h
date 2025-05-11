@@ -13,4 +13,13 @@ renderChipsGoal(void);
 void
 renderTotalChips(void);
 
+void
+renderChipsAndMult(void);
+
+void
+renderChips(void);
+
+void
+renderMult(void);
+
 #endif
