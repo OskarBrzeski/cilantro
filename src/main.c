@@ -1,6 +1,6 @@
 #include "globals.h"
+#include "playfield.h"
 #include "raylib.h"
-#include "title.h"
 
 bool quitGame = false;
 int windowWidth = 1200;
@@ -15,7 +15,7 @@ main()
         {
                 BeginDrawing();
                 ClearBackground(BLACK);
-                renderTitleScreen();
+                renderPlayField();
                 DrawFPS(5, 5);
                 EndDrawing();
         }
