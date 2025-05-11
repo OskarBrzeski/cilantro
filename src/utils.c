@@ -42,7 +42,7 @@ centreTextY(Rectangle *rec, int fontSize)
 }
 
 int
-rightTextY(Rectangle *rec, int fontSize, int offset)
+downTextY(Rectangle *rec, int fontSize, int offset)
 {
         return rec->y + rec->height - offset - fontSize;
 }
