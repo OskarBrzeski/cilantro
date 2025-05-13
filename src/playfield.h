@@ -22,4 +22,10 @@ renderChips(void);
 void
 renderMult(void);
 
+void
+renderHands(void);
+
+void
+renderDiscards(void);
+
 #endif
