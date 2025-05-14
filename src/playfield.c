@@ -137,9 +137,6 @@ renderHands(void)
         int labelY = upTextY(&rec, 2);
         DrawText(handsLabel, labelX, labelY, labelFontSize, WHITE);
 
-        // Prevents Segmentation Fault
-        DrawRectangleRounded((Rectangle){0, 0, 0, 0}, 0, 0, BLACK);
-
         int handsFontSize = 40;
         const char *handsCount = intToString(hands, 4);
         int handsWidth = MeasureText(handsCount, handsFontSize);
@@ -167,9 +164,6 @@ renderDiscards(void)
         int labelX = centreTextX(&rec, labelWidth);
         int labelY = upTextY(&rec, 2);
         DrawText(handsLabel, labelX, labelY, labelFontSize, WHITE);
-
-        // Prevents Segmentation Fault
-        DrawRectangleRounded((Rectangle){0, 0, 0, 0}, 0, 0, BLACK);
 
         int handsFontSize = 40;
         const char *handsCount = intToString(hands, 4);

@@ -2,11 +2,12 @@
 #include "raylib.h"
 #include <stdint.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 const char *
 intToString(int64_t number, int strSize)
 {
-        char *result;
+        char *result = malloc(strSize);
         snprintf(result, strSize, "%li", number);
         return result;
 }
