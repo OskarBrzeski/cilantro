@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-const char *
+char *
 intToString(int64_t number, int strSize)
 {
         char *result = malloc(strSize);

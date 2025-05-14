@@ -4,7 +4,7 @@
 #include "raylib.h"
 #include <stdint.h>
 
-const char *
+char *
 intToString(int64_t number, int strSize);
 
 int

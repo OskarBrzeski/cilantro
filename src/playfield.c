@@ -3,6 +3,7 @@
 #include "raylib.h"
 #include "utils.h"
 #include <stdint.h>
+#include <stdlib.h>
 
 void
 renderPlayField(void)
@@ -27,7 +28,7 @@ renderChipsGoal(void)
         int goal = 500000; // temporary
         int fontSize = 30;
 
-        const char *goalLabel = "Goal:";
+        char *goalLabel = "Goal:";
         DrawText(goalLabel, 15, 90, fontSize, RAYWHITE);
 
         int goalTextLength = MeasureText(goalLabel, fontSize);
@@ -40,11 +41,12 @@ renderChipsGoal(void)
         };
         DrawRectangleRounded(rec, 0.3f, 0, BLACK);
 
-        const char *goalString = intToString(goal, fontSize);
+        char *goalString = intToString(goal, fontSize);
         int textWidth = MeasureText(goalString, fontSize);
         int textX = centreTextX(&rec, textWidth);
         int textY = centreTextY(&rec, fontSize);
         DrawText(goalString, textX, textY, fontSize, RAYWHITE);
+        free(goalString);
 }
 
 void
@@ -61,11 +63,12 @@ renderTotalChips(void)
         DrawRectangleRounded(rec, 0.3f, 0, BLACK);
 
         int fontSize = 40;
-        const char *chipsString = intToString(chips, 16);
+        char *chipsString = intToString(chips, 16);
         int textWidth = MeasureText(chipsString, fontSize);
         int textX = centreTextX(&rec, textWidth);
         int textY = centreTextY(&rec, fontSize);
         DrawText(chipsString, textX, textY, fontSize, RAYWHITE);
+        free(chipsString);
 }
 
 void
@@ -90,11 +93,12 @@ renderChips(void)
         DrawRectangleRounded(rec, 0.3f, 0, BLUE);
 
         int fontSize = 40;
-        const char *chipsString = intToString(chips, 16);
+        char *chipsString = intToString(chips, 16);
         int textWidth = MeasureText(chipsString, fontSize);
         int textX = rightTextX(&rec, textWidth, 10);
         int textY = centreTextY(&rec, fontSize);
         DrawText(chipsString, textX, textY, fontSize, RAYWHITE);
+        free(chipsString);
 }
 
 void
@@ -111,10 +115,11 @@ renderMult(void)
         DrawRectangleRounded(rec, 0.3f, 0, RED);
 
         int fontSize = 40;
-        const char *chipsString = intToString(mult, 16);
+        char *chipsString = intToString(mult, 16);
         int textX = leftTextX(&rec, 10);
         int textY = centreTextY(&rec, fontSize);
         DrawText(chipsString, textX, textY, fontSize, RAYWHITE);
+        free(chipsString);
 }
 
 void
@@ -131,18 +136,19 @@ renderHands(void)
         DrawRectangleRounded(rec, 0.3f, 0, BLACK);
 
         int labelFontSize = 20;
-        const char *handsLabel = "Hands";
+        char *handsLabel = "Hands";
         int labelWidth = MeasureText(handsLabel, labelFontSize);
         int labelX = centreTextX(&rec, labelWidth);
         int labelY = upTextY(&rec, 2);
         DrawText(handsLabel, labelX, labelY, labelFontSize, WHITE);
 
         int handsFontSize = 40;
-        const char *handsCount = intToString(hands, 4);
+        char *handsCount = intToString(hands, 4);
         int handsWidth = MeasureText(handsCount, handsFontSize);
         int handsX = centreTextX(&rec, handsWidth);
         int handsY = downTextY(&rec, handsFontSize, 2);
         DrawText(handsCount, handsX, handsY, handsFontSize, WHITE);
+        free(handsCount);
 }
 
 void
@@ -159,16 +165,17 @@ renderDiscards(void)
         DrawRectangleRounded(rec, 0.3f, 0, BLACK);
 
         int labelFontSize = 20;
-        const char *handsLabel = "Discards";
-        int labelWidth = MeasureText(handsLabel, labelFontSize);
+        char *discardsLabel = "Discards";
+        int labelWidth = MeasureText(discardsLabel, labelFontSize);
         int labelX = centreTextX(&rec, labelWidth);
         int labelY = upTextY(&rec, 2);
-        DrawText(handsLabel, labelX, labelY, labelFontSize, WHITE);
+        DrawText(discardsLabel, labelX, labelY, labelFontSize, WHITE);
 
-        int handsFontSize = 40;
-        const char *handsCount = intToString(hands, 4);
-        int handsWidth = MeasureText(handsCount, handsFontSize);
+        int discardsFontSize = 40;
+        char *discardsCount = intToString(hands, 4);
+        int handsWidth = MeasureText(discardsCount, discardsFontSize);
         int handsX = centreTextX(&rec, handsWidth);
-        int handsY = downTextY(&rec, handsFontSize, 2);
-        DrawText(handsCount, handsX, handsY, handsFontSize, WHITE);
+        int handsY = downTextY(&rec, discardsFontSize, 2);
+        DrawText(discardsCount, handsX, handsY, discardsFontSize, WHITE);
+        free(discardsCount);
 }
