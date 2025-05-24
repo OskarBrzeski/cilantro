@@ -157,7 +157,7 @@ renderHands(void)
 void
 renderDiscards(void)
 {
-        int hands = 4;
+        int discards = 4;
 
         Rectangle rec = {
             .x = 190,
@@ -175,11 +175,11 @@ renderDiscards(void)
         DrawText(discardsLabel, labelX, labelY, labelFontSize, WHITE);
 
         int discardsFontSize = 40;
-        char *discardsCount = intToString(hands, 4);
-        int handsWidth = MeasureText(discardsCount, discardsFontSize);
-        int handsX = centreTextX(&rec, handsWidth);
-        int handsY = downTextY(&rec, discardsFontSize, 2);
-        DrawText(discardsCount, handsX, handsY, discardsFontSize, WHITE);
+        char *discardsCount = intToString(discards, 4);
+        int discardsWidth = MeasureText(discardsCount, discardsFontSize);
+        int discardsX = centreTextX(&rec, discardsWidth);
+        int discardsY = downTextY(&rec, discardsFontSize, 2);
+        DrawText(discardsCount, discardsX, discardsY, discardsFontSize, WHITE);
         free(discardsCount);
 }
 
