@@ -28,4 +28,13 @@ renderHands(void);
 void
 renderDiscards(void);
 
+void
+renderCash(void);
+
+void
+renderAnte(void);
+
+void
+renderRound(void);
+
 #endif

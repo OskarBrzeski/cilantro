@@ -20,6 +20,9 @@ renderFieldLayout(void)
         renderChipsAndMult();
         renderHands();
         renderDiscards();
+        renderCash();
+        renderAnte();
+        renderRound();
 }
 
 void
@@ -178,4 +181,92 @@ renderDiscards(void)
         int handsY = downTextY(&rec, discardsFontSize, 2);
         DrawText(discardsCount, handsX, handsY, discardsFontSize, WHITE);
         free(discardsCount);
+}
+
+void
+renderCash(void)
+{
+        int cash = 594;
+
+        Rectangle rec = {
+            .x = 80,
+            .y = 600,
+            .width = 210,
+            .height = 70,
+        };
+        DrawRectangleRounded(rec, 0.3f, 0, BLACK);
+
+        int labelFontSize = 20;
+        char *cashLabel = "Cash";
+        int labelWidth = MeasureText(cashLabel, labelFontSize);
+        int labelX = centreTextX(&rec, labelWidth);
+        int labelY = upTextY(&rec, 2);
+        DrawText(cashLabel, labelX, labelY, labelFontSize, WHITE);
+
+        int cashFontSize = 40;
+        char *cashCount = intToString(cash, 6);
+        char *cashText = concatText("$", cashCount);
+        int cashWidth = MeasureText(cashText, cashFontSize);
+        int cashX = centreTextX(&rec, cashWidth);
+        int cashY = downTextY(&rec, cashFontSize, 2);
+        DrawText(cashText, cashX, cashY, cashFontSize, WHITE);
+}
+
+void
+renderAnte(void)
+{
+        int ante = 13;
+
+        Rectangle rec = {
+            .x = 80,
+            .y = 700,
+            .width = 100,
+            .height = 70,
+        };
+        DrawRectangleRounded(rec, 0.3f, 0, BLACK);
+
+        int labelFontSize = 20;
+        char *anteLabel = "Ante";
+        int labelWidth = MeasureText(anteLabel, labelFontSize);
+        int labelX = centreTextX(&rec, labelWidth);
+        int labelY = upTextY(&rec, 2);
+        DrawText(anteLabel, labelX, labelY, labelFontSize, WHITE);
+
+        int anteFontSize = 40;
+        char *anteCount = intToString(ante, 4);
+        char *anteText = concatText(anteCount, "/8");
+        int anteWidth = MeasureText(anteText, anteFontSize);
+        int anteX = centreTextX(&rec, anteWidth);
+        int anteY = downTextY(&rec, anteFontSize, 2);
+        DrawText(anteText, anteX, anteY, anteFontSize, WHITE);
+        free(anteCount);
+}
+
+void
+renderRound(void)
+{
+        int round = 55;
+
+        Rectangle rec = {
+            .x = 190,
+            .y = 700,
+            .width = 100,
+            .height = 70,
+        };
+        DrawRectangleRounded(rec, 0.3f, 0, BLACK);
+
+        int labelFontSize = 20;
+        char *roundLabel = "Round";
+        int labelWidth = MeasureText(roundLabel, labelFontSize);
+        int labelX = centreTextX(&rec, labelWidth);
+        int labelY = upTextY(&rec, 2);
+        DrawText(roundLabel, labelX, labelY, labelFontSize, WHITE);
+
+        int roundsFontSize = 40;
+        char *roundCount = intToString(round, 4);
+        int roundWidth = MeasureText(roundCount, roundsFontSize);
+        int roundX = centreTextX(&rec, roundWidth);
+        int roundY = downTextY(&rec, roundsFontSize, 2);
+        DrawText(roundCount, roundX, roundY, roundsFontSize, WHITE);
+        free(roundCount);
 }

@@ -7,6 +7,9 @@
 char *
 intToString(int64_t number, int strSize);
 
+char *
+concatText(const char *first, const char *second);
+
 int
 leftTextX(Rectangle *rec, int offset);
 

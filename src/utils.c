@@ -3,12 +3,22 @@
 #include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 char *
 intToString(int64_t number, int strSize)
 {
         char *result = malloc(strSize);
         snprintf(result, strSize, "%li", number);
+        return result;
+}
+
+char *
+concatText(const char *first, const char *second)
+{
+        int size = strlen(first) + strlen(second) + 1;
+        char *result = malloc(size);
+        snprintf(result, size, "%s%s", first, second);
         return result;
 }
 
